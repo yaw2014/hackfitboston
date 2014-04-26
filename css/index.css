@@ -86,3 +86,17 @@ body {
 		padding-left: 0;
 	}
 }
+
+#moodSleepSlider .slider-selection {
+	background: #BABABA;
+	width: 100%;
+	padding: 0 10% 0 10%;
+}
+
+.startSleep {
+	padding: 1% 0 1% 0;
+}
+
+.moodNote {
+	padding: 1% 0 1% 0;
+}
