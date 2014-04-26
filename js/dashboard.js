@@ -7,7 +7,7 @@ function getDay(str) {
 function getMood(timing, obj) {
 	var timing = "mood_"+timing;
 	var day = getDay(obj.key);
-	return obj.series.options[timing][day];
+	return obj.series.options[timing][day-1];
 }
 function drawSleepQualityGraph(dataIndex) {
 	data = [
@@ -28,27 +28,56 @@ function drawSleepQualityGraph(dataIndex) {
 			[Date.UTC(2014, 04, 26, 23, 40), Date.UTC(2014, 04, 27, 8, 00)],
 		],
 		[
-			[Date.UTC(2014, 04, 26, 23, 40), Date.UTC(2014, 04, 27, 8, 00)],
-			[Date.UTC(2014, 04, 26, 23, 55), Date.UTC(2014, 04, 27, 7, 30)],
-			[Date.UTC(2014, 04, 26, 23, 22), Date.UTC(2014, 04, 27, 8, 30)],
-			[Date.UTC(2014, 04, 26, 22, 40), Date.UTC(2014, 04, 27, 8, 00)],
-			[Date.UTC(2014, 04, 26, 23, 59), Date.UTC(2014, 04, 27, 8, 30)],
-			[Date.UTC(2014, 04, 26, 22, 40), Date.UTC(2014, 04, 27, 7, 30)],
-			[Date.UTC(2014, 04, 27, 02, 30), Date.UTC(2014, 04, 27, 8, 00)],
-			[Date.UTC(2014, 04, 26, 23, 45), Date.UTC(2014, 04, 27, 8, 00)],
-			[Date.UTC(2014, 04, 26, 22, 30), Date.UTC(2014, 04, 27, 7, 30)],
-			[Date.UTC(2014, 04, 26, 22, 30), Date.UTC(2014, 04, 27, 8, 30)],
-			[Date.UTC(2014, 04, 26, 23, 50), Date.UTC(2014, 04, 27, 9, 00)],
-			[Date.UTC(2014, 04, 26, 23, 50), Date.UTC(2014, 04, 27, 8, 00)],
-			[Date.UTC(2014, 04, 26, 23, 55), Date.UTC(2014, 04, 27, 7, 00)],
-			[Date.UTC(2014, 04, 26, 23, 40), Date.UTC(2014, 04, 27, 8, 00)],
+			[Date.UTC(2014, 04, 27, 00, 02), Date.UTC(2014, 04, 27, 5, 07)],
+			[Date.UTC(2014, 04, 26, 21, 53), Date.UTC(2014, 04, 27, 4, 39)],
+			[Date.UTC(2014, 04, 26, 23, 03), Date.UTC(2014, 04, 27, 4, 55)],
+			[Date.UTC(2014, 04, 26, 21, 37), Date.UTC(2014, 04, 27, 4, 33)],
+			[Date.UTC(2014, 04, 26, 22, 42), Date.UTC(2014, 04, 27, 4, 40)],
+			[Date.UTC(2014, 04, 26, 22, 02), Date.UTC(2014, 04, 27, 4, 35)],
+			[Date.UTC(2014, 04, 26, 22, 01), Date.UTC(2014, 04, 27, 4, 59)],
+			[Date.UTC(2014, 04, 26, 22, 33), Date.UTC(2014, 04, 27, 4, 58)],
+			[Date.UTC(2014, 04, 26, 21, 10), Date.UTC(2014, 04, 27, 4, 42)],
+			[Date.UTC(2014, 04, 26, 22, 22), Date.UTC(2014, 04, 27, 4, 38)],
+			[Date.UTC(2014, 04, 26, 21, 47), Date.UTC(2014, 04, 27, 4, 34)],
+			[Date.UTC(2014, 04, 26, 22, 24), Date.UTC(2014, 04, 27, 4, 36)],
+			[Date.UTC(2014, 04, 26, 23, 14), Date.UTC(2014, 04, 27, 4, 55)],
+			[Date.UTC(2014, 04, 27, 00, 03), Date.UTC(2014, 04, 27, 5, 11)],
 		]
 	];
 	$('#container').highcharts({
 		chart: {
 			type: 'columnrange',
-		inverted: true,
-		zoomType: "xy",
+			inverted: true,
+			zoomType: "xy",
+			events: {
+                load: function(event) {
+					var good = function(v1, v2) { return {
+							linearGradient: { x1: 0, x2: 0, y1: 0, y1: 1 },
+							stops: [
+								[0, 'rgba(0,255,0,'+v1/100+')'],
+								[1, 'rgba(0,255,0,'+v2/100+')'],
+							]
+						}};
+					var bad = function(v1, v2) { return {
+							linearGradient: { x1: 0, x2: 0, y1: 0, y1: 1 },
+							stops: [
+								[0, 'rgba(255,0,0,'+v1/100+')'],
+								[1, 'rgba(255,0,0,'+v2/100+')'],
+							]
+						}};
+					var mood_sleep, mood_wake, day;
+					for (var i in this.series[0].points) {
+						delete this.series[0].pointAttr.hover.fill;
+						delete this.series[0].pointAttr[''].fill;
+						day = getDay(this.series[0].points[i].category)-1;
+						mood_sleep = this.series[0].points[i].series.options.mood_sleep[day];
+						mood_wake = this.series[0].points[i].series.options.mood_wake[day];
+						if (mood_wake >= mood_sleep) this.series[0].points[i].graphic.attr("fill", good(mood_sleep, mood_wake));
+						else this.series[0].points[i].graphic.attr("fill", bad(mood_sleep, mood_wake));
+						console.log("on day ",day,"the moods where", mood_sleep, mood_wake);
+					}
+                }
+            }    
 		},
 		title: {
 			text: 'Sleep Quality'
@@ -83,13 +112,11 @@ function drawSleepQualityGraph(dataIndex) {
 					formatter: function (a) {
 						var img;
 						if (a.align == "left") {
-							if (getMood("wake", this) < getMood("sleep", this) ) img = "<img src='https://cdn1.iconfinder.com/data/icons/humano2/24x24/emotes/face-sad.png'>";
-							else img = "<img src='http://icons.iconarchive.com/icons/hopstarter/sleek-xp-software/24/Yahoo-Messenger-icon.png'>";
+							img = getMood("wake", this);
 						} else {
-							if (getMood("wake", this) > getMood("sleep", this) ) img = "<img src='https://cdn1.iconfinder.com/data/icons/humano2/24x24/emotes/face-sad.png'>";
-							else img = "<img src='http://icons.iconarchive.com/icons/hopstarter/sleek-xp-software/24/Yahoo-Messenger-icon.png'>";
+							img = getMood("sleep", this);
 						}
-						return img;
+						return "<strong>"+img+"</strong>";
 					}
 				}
 			}
@@ -99,13 +126,6 @@ function drawSleepQualityGraph(dataIndex) {
 		},
 		series: [{
 			name: 'Time asleep',
-			color: {
-				linearGradient: { x1: 0, x2: 0, y1: 0, y1: 1 },
-				stops: [
-					[0, 'red'],
-				[1, 'green']
-					]
-			},
 			mood_sleep: [ 20, 20, 30, 10, 80, 80, 80, 80, 30, 80, 80, 90, 60, 90 ],
 			mood_wake: [ 50, 50, 20, 50, 80, 80, 50, 80, 80, 80, 80, 80, 80, 50 ],
 			data: data[dataIndex]
