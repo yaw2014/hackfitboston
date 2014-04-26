@@ -51,18 +51,18 @@ function drawSleepQualityGraph(dataIndex) {
 			zoomType: "xy",
 			events: {
                 load: function(event) {
-					var good = function(v1, v2) { return {
+					var good = function(v1, v2) { var avg = parseInt((v1+v2)/2)/100; return {
 							linearGradient: { x1: 0, x2: 0, y1: 0, y1: 1 },
 							stops: [
-								[0, 'rgba(0,255,0,'+v1/100+')'],
-								[1, 'rgba(0,255,0,'+v2/100+')'],
+								[0, fadeToColor("rgb(255,0,0)", "rgb(0,255,0)", avg)],
+								[1, fadeToColor("rgb(255,0,0)", "rgb(0,255,0)", avg)],
 							]
 						}};
-					var bad = function(v1, v2) { return {
+					var bad = function(v1, v2) { var avg = parseInt((v1+v2)/2)/100; return {
 							linearGradient: { x1: 0, x2: 0, y1: 0, y1: 1 },
 							stops: [
-								[0, 'rgba(255,0,0,'+v1/100+')'],
-								[1, 'rgba(255,0,0,'+v2/100+')'],
+								[0, fadeToColor("rgb(255,0,0)", "rgb(0,255,0)", avg)],
+								[1, fadeToColor("rgb(255,0,0)", "rgb(0,255,0)", avg)],
 							]
 						}};
 					var mood_sleep, mood_wake, day;
@@ -74,7 +74,7 @@ function drawSleepQualityGraph(dataIndex) {
 						mood_wake = this.series[0].points[i].series.options.mood_wake[day];
 						if (mood_wake >= mood_sleep) this.series[0].points[i].graphic.attr("fill", good(mood_sleep, mood_wake));
 						else this.series[0].points[i].graphic.attr("fill", bad(mood_sleep, mood_wake));
-						console.log("on day ",day,"the moods where", mood_sleep, mood_wake);
+						//console.log("on day ",day,"the moods where", mood_sleep, mood_wake);
 					}
                 }
             }    
@@ -83,7 +83,7 @@ function drawSleepQualityGraph(dataIndex) {
 			text: 'Sleep Quality'
 		},
 		subtitle: {
-			text: 'For the last 2 weeks'
+			text: 'For experiment: H.I.I.T in the morning'
 		},
 		xAxis: {
 			categories: ['Day 1', 'Day 2', 'Day 3', 'Day 4', 'Day 5', 'Day 6', 'Day 7', 'Day 8', 'Day 9', 'Day 10', 'Day 11', "Day 12", "Day 13", "Day 14"]
@@ -131,4 +131,17 @@ function drawSleepQualityGraph(dataIndex) {
 			data: data[dataIndex]
 		}]
 	});
+}
+function fadeToColor(rgbColor1, rgbColor2, ratio) {
+    var color1 = rgbColor1.substring(4, rgbColor1.length - 1).split(','),
+        color2 = rgbColor2.substring(4, rgbColor2.length - 1).split(','),
+        difference,
+        newColor = [];
+
+    for (var i = 0; i < color1.length; i++) {
+        difference = color2[i] - color1[i];
+        newColor.push(Math.floor(parseInt(color1[i], 10) + difference * ratio));
+    }
+
+    return 'rgb(' + newColor + ')';
 }
