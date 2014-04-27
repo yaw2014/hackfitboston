@@ -35,17 +35,26 @@
       <div class="row">
         <div class="container">
 			<script>
-
+				function loginUser() {
+					if ($("#email").val() == localStorage.email && localStorage.password == $("#password").val()) {
+						$(".msg").slideUp();
+						return true;
+					} else {
+						$(".msg").slideDown();
+						return false;
+					}
+				}
 			</script>
-      <form class="form-signin" role="form" onsubmit="return false">
+      <form class="form-signin" action="sleepbuddy.html" role="form" onsubmit="return loginUser();">
         <!--<h2 class="form-signin-heading">Please sign in</h2>-->
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
+		<p class="msg bg-danger text-danger" style="display: none; padding: 2px; border-radius: 4px;text-align:center">Sorry, your email/password is incorrect.</p>
+        <input type="email" class="form-control" placeholder="Email address" required autofocus id="email">
         <br>
         <input type="password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="window.location='dashboard.html'">Sign In</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
       </form>
 	  <p><br>Need to sleep with friends? <a href="register.html">Register</a>
         <!--<div class="col-lg-4">

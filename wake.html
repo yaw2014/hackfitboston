@@ -7,18 +7,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-    <title>Sleep with Friends</title>
-	  <script src="js/jquery.js"></script>
+    <title>Sleep time...</title>
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap/js/bootstrap.min.js"></script>
     <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="js/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
-    <link href="css/index.css" rel="stylesheet">
     <link href="css/bootstrap-slider.css" rel="stylesheet">
-
-    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
+    <link href="css/index.css" rel="stylesheet">
   </head>
 
   <body>
@@ -27,16 +22,11 @@
 
       <div class="masthead">
         <h3 class="text-muted">Sleep with Friends</h3>
-        <ul class="nav nav-justified">
-          <li class="active"><a href="#">Home</a></li>
-          <li><a href="login.html">Login</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
       </div>
 
       <!-- Moode Slider -->
       <div class="moodSlider">
-        <h3>It's 4:45 am, how do you feel?</h3>
+        <h3>It's 4:46 am, how do you feel?</h3>
         <p>On a scale from "Adam's Song" to "Damnit (What's My Age Again)":</p>
         <input id="moodSleepSlider" data-slider-id='moodSleepSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="80"/>
       </div>
@@ -48,10 +38,36 @@
         <input type="text" class="form-control" placeholder="Ex: had dreams about writing STREAM functions in Pig for loading data into Hadoop">
       </div>
 
-    <!-- Go to Sleep button -->
+    <!-- Wake up button -->
     <div class="startSleep">
-      <button type="button" class="btn btn-default">It's go time!</button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">It's go time!</button>
     </div>
+
+    <!-- Bottom nav bar -->
+    <nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="sleepbuddy.html">Buddy</a></li>
+            <li><a href="#">Check-in</a></li>
+            <li><a href="dashboard.html">Stats</a></li>
+          </ul>
+         
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
       <!-- Site footer -->
       <div class="footer">
