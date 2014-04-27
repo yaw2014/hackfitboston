@@ -34,22 +34,29 @@ body { padding-bottom: 70px; }
 
 <body>
     <div class="container">
+		<script>
+
+		</script>
+		<form onclick="return setupUser()" action="sleep.html">
         <h2>Enter your 14 day challenge</h2>
         <br>
-        <textarea class="form-control" rows="3"></textarea>
+        <textarea id="challenge" class="form-control" rows="3"></textarea>
         <h2>Who's going to hold you accountable?</h2>
         <!--<div class="btn-group">
             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown"> My friends <span class="caret"></span></button>-->
+			<input type="email" id="accountability" class="form-control" />
+			<!--
             <select class="form-control">
                 <option>Andie Acker</option>
                 <option>Jessica Livingston</option>
                 <option>Kelly Sanderson</option>
                 <option>Arielle Woods</option>
             </select>
+			-->
         <!--</div>-->
     <br>
     <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="window.location='dashboard.html'">Sign up</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Get my sleep on!</button>
       </form>
 
 

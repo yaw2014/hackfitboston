@@ -30,10 +30,9 @@
 				</div>
 				<div class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
-						<li><a href="#">Dashboard</a></li>
-						<li><a href="#">Settings</a></li>
-						<li><a href="#">Profile</a></li>
-						<li><a href="#">Help</a></li>
+						<li><a href="dashboard.html">Dashboard</a></li>
+						<li><a href="settings.html">Settings</a></li>
+						<li><a href="profile.html">Profile</a></li>
 					</ul>
 					<form class="navbar-form navbar-right">
 						<input type="text" class="form-control" placeholder="Search...">
@@ -64,6 +63,45 @@
 					</ul>
 				</div>
 				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+					<!-- Chart graph -->
+					<h2 class="sub-header">Sleep Performance</h2>
+					<div class="table-responsive">
+						<div id="container">
+						</div>
+					</div>
+
+					<!-- Table -->
+					<h2 class="sub-header">Your Performance</h2>
+					<div class="table-responsive">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<th>Day</th>
+									<th>Sleep Time</th>
+									<th>Sleep Mood</th>
+									<th>Wake Time</th>
+									<th>Wake Mood</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr><td>14</td><td>12:03am</td><td>90</td><td>5:11am</td><td>50</td></tr>
+								<tr><td>13</td><td>11:14pm</td><td>60</td><td>4:55am</td><td>80</td></tr>
+								<tr><td>12</td><td>10:24pm</td><td>90</td><td>4:36am</td><td>80</td></tr>
+								<tr><td>11</td><td>9:47pm</td><td>80</td><td>4:34am</td><td>80</td></tr>
+								<tr><td>10</td><td>10:22pm</td><td>80</td><td>4:38am</td><td>80</td></tr>
+								<tr><td>9</td><td>9:10pm</td><td>30</td><td>4:42am</td><td>80</td></tr>
+								<tr><td>8</td><td>10:33pm</td><td>80</td><td>4:58am</td><td>80</td></tr>
+								<tr><td>7</td><td>10:01pm</td><td>80</td><td>4:59am</td><td>50</td></tr>
+								<tr><td>6</td><td>10:02pm</td><td>80</td><td>4:35am</td><td>80</td></tr>
+								<tr><td>5</td><td>10:42pm</td><td>80</td><td>4:40am</td><td>80</td></tr>
+								<tr><td>4</td><td>9:37pm</td><td>10</td><td>4:33am</td><td>50</td></tr>
+								<tr><td>3</td><td>11:03pm</td><td>30</td><td>4:55am</td><td>20</td></tr>
+								<tr><td>2</td><td>9:53pm</td><td>20</td><td>4:39am</td><td>50</td></tr>
+								<tr><td>1</td><td>12:02am</td><td>20</td><td>5:07am</td><td>50</td></tr>
+							</tbody>
+						</table>
+					</div>
+
 					<h1 class="page-header">Dashboard</h1>
 					<div class="row placeholders">
 						<div class="col-xs-6 col-sm-3 placeholder">
@@ -87,141 +125,7 @@
 							<span class="text-muted">Something else</span>
 						</div>
 					</div>
-					<!-- Chart graph -->
-					<h2 class="sub-header">Chart</h2>
-					<div class="table-responsive">
-						<div id="container">
-						</div>
-					</div>
-					<!-- Table -->
-					<h2 class="sub-header">Section title</h2>
-					<div class="table-responsive">
-						<table class="table table-striped">
-							<thead>
-								<tr>
-									<th>#</th>
-									<th>Header</th>
-									<th>Header</th>
-									<th>Header</th>
-									<th>Header</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>1,001</td>
-									<td>Lorem</td>
-									<td>ipsum</td>
-									<td>dolor</td>
-									<td>sit</td>
-								</tr>
-								<tr>
-									<td>1,002</td>
-									<td>amet</td>
-									<td>consectetur</td>
-									<td>adipiscing</td>
-									<td>elit</td>
-								</tr>
-								<tr>
-									<td>1,003</td>
-									<td>Integer</td>
-									<td>nec</td>
-									<td>odio</td>
-									<td>Praesent</td>
-								</tr>
-								<tr>
-									<td>1,003</td>
-									<td>libero</td>
-									<td>Sed</td>
-									<td>cursus</td>
-									<td>ante</td>
-								</tr>
-								<tr>
-									<td>1,004</td>
-									<td>dapibus</td>
-									<td>diam</td>
-									<td>Sed</td>
-									<td>nisi</td>
-								</tr>
-								<tr>
-									<td>1,005</td>
-									<td>Nulla</td>
-									<td>quis</td>
-									<td>sem</td>
-									<td>at</td>
-								</tr>
-								<tr>
-									<td>1,006</td>
-									<td>nibh</td>
-									<td>elementum</td>
-									<td>imperdiet</td>
-									<td>Duis</td>
-								</tr>
-								<tr>
-									<td>1,007</td>
-									<td>sagittis</td>
-									<td>ipsum</td>
-									<td>Praesent</td>
-									<td>mauris</td>
-								</tr>
-								<tr>
-									<td>1,008</td>
-									<td>Fusce</td>
-									<td>nec</td>
-									<td>tellus</td>
-									<td>sed</td>
-								</tr>
-								<tr>
-									<td>1,009</td>
-									<td>augue</td>
-									<td>semper</td>
-									<td>porta</td>
-									<td>Mauris</td>
-								</tr>
-								<tr>
-									<td>1,010</td>
-									<td>massa</td>
-									<td>Vestibulum</td>
-									<td>lacinia</td>
-									<td>arcu</td>
-								</tr>
-								<tr>
-									<td>1,011</td>
-									<td>eget</td>
-									<td>nulla</td>
-									<td>Class</td>
-									<td>aptent</td>
-								</tr>
-								<tr>
-									<td>1,012</td>
-									<td>taciti</td>
-									<td>sociosqu</td>
-									<td>ad</td>
-									<td>litora</td>
-								</tr>
-								<tr>
-									<td>1,013</td>
-									<td>torquent</td>
-									<td>per</td>
-									<td>conubia</td>
-									<td>nostra</td>
-								</tr>
-								<tr>
-									<td>1,014</td>
-									<td>per</td>
-									<td>inceptos</td>
-									<td>himenaeos</td>
-									<td>Curabitur</td>
-								</tr>
-								<tr>
-									<td>1,015</td>
-									<td>sodales</td>
-									<td>ligula</td>
-									<td>in</td>
-									<td>libero</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+					
 				</div>
 			</div>
 		</div>

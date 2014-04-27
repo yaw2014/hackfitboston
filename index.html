@@ -19,29 +19,6 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
-  <style type = text/css>
-  body
-  {
-      background-image:url("img/logo.png");
-      background-repeat:no-repeat;
-      background-size: 50%;
-  }
-  /*img.logo{
-  position: absolute;
-  max-width: 65%;
-  top: 10%;
-  left: 10%;
-}
-img.logo:empty{
-  top: 43%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -moz-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  -o-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}*/
-  </style>
 
   <body>
 
@@ -51,6 +28,7 @@ img.logo:empty{
         <h3 class="text-muted">Sleep with Friends</h3>
         <ul class="nav nav-justified">
           <li class="active"><a href="#">Home</a></li>
+          <li><a href="register.html">Register</a></li>
           <li><a href="login.html">Login</a></li>
           <li><a href="about.html">About</a></li>
         </ul>
@@ -66,16 +44,34 @@ img.logo:empty{
       <!-- Example row of columns -->
       <div class="row">
         <div class="container">
-      <form class="form-signin" role="form">
+			<script>
+				function registerUser() {
+					localStorage.email = $("#email").val();
+					localStorage.password = $("#password").val();
+					return true;
+				}
+			</script>
+      <form class="form-signin" action="sleepbuddy.html" role="form" onsubmit="return registerUser();">
         <!--<h2 class="form-signin-heading">Please sign in</h2>-->
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" class="form-control" placeholder="Email address" required autofocus id="email">
         <br>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="password" id="password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me" id="remember"> Remember me
+		  <script>
+			  $("#remember").click(function(){
+				  if ($("#remember:checked").length) localStorage.remember = 1;
+				  else delete localStorage.remember;
+			  })
+		  </script>
+		  <script>
+			  if (localStorage.remember) $("#remember").prop("checked","checked");
+			  else $("#remember").prop("checked", "");
+		  </script>
         </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="window.location='sleepbuddy.html'">Sign in</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
       </form>
+	  <p><br>Already sleeping with friends? <a href="login.html">Login</a>
         <!--<div class="col-lg-4">
           <h2>Some text thingy</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
@@ -107,4 +103,3 @@ img.logo:empty{
     <!-- Placed at the end of the document so the pages load faster -->
   </body>
 </html>
-
