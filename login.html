@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-    <title>Sleep with Friends</title>
+    <title>Justified Nav Template for Bootstrap</title>
 	<script src="js/jquery.js"></script>
     <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="js/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -50,23 +50,13 @@
 		<p class="msg bg-danger text-danger" style="display: none; padding: 2px; border-radius: 4px;text-align:center">Sorry, your email/password is incorrect.</p>
         <input type="email" class="form-control" placeholder="Email address" required autofocus id="email">
         <br>
-        <input type="password" id="password" class="form-control" placeholder="Password" required>
+        <input type="password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
-          <input type="checkbox" value="remember-me" id="remember"> Remember me
-		  <script>
-			  $("#remember").click(function(){
-				  if ($("#remember:checked").length) localStorage.remember = 1;
-				  else delete localStorage.remember;
-			  })
-		  </script>
-		  <script>
-			  if (localStorage.remember) $("#remember").prop("checked","checked");
-			  else $("#remember").prop("checked", "");
-		  </script>
+          <input type="checkbox" value="remember-me"> Remember me
         </label>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign In</button>
       </form>
-	  <p><br>Already sleeping with friends? <a href="login.html">Login</a>
+	  <p><br>Need to sleep with friends? <a href="register.html">Register</a>
         <!--<div class="col-lg-4">
           <h2>Some text thingy</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
