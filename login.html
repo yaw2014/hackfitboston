@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
-    <title>Justified Nav Template for Bootstrap</title>
+    <title>Sleep with Friends</title>
 	<script src="js/jquery.js"></script>
     <link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="js/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
@@ -24,6 +24,16 @@
 
     <div class="container">
 
+      <!--<div class="masthead">
+        <h3 class="text-muted">Sleep with Friends</h3>
+        <ul class="nav nav-justified">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="register.html">Register</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </div>-->
+
       <!-- Jumbotron -->
       <div class="jumbotron">
         <h1>Sleep with Friends</h1>
@@ -35,19 +45,33 @@
       <div class="row">
         <div class="container">
 			<script>
-
+				function registerUser() {
+					localStorage.email = $("#email").val();
+					localStorage.password = $("#password").val();
+					return true;
+				}
 			</script>
-      <form class="form-signin" role="form" onsubmit="return false">
+      <form class="form-signin" action="sleepbuddy.html" role="form" onsubmit="return registerUser();">
         <!--<h2 class="form-signin-heading">Please sign in</h2>-->
-        <input type="email" class="form-control" placeholder="Email address" required autofocus>
+        <input type="email" class="form-control" placeholder="Email address" required autofocus id="email">
         <br>
-        <input type="password" class="form-control" placeholder="Password" required>
+        <input type="password" id="password" class="form-control" placeholder="Password" required>
         <label class="checkbox">
-          <input type="checkbox" value="remember-me"> Remember me
+          <input type="checkbox" value="remember-me" id="remember"> Remember me
+		  <script>
+			  $("#remember").click(function(){
+				  if ($("#remember:checked").length) localStorage.remember = 1;
+				  else delete localStorage.remember;
+			  })
+		  </script>
+		  <script>
+			  if (localStorage.remember) $("#remember").prop("checked","checked");
+			  else $("#remember").prop("checked", "");
+		  </script>
         </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" onclick="window.location='dashboard.html'">Sign In</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Register</button>
       </form>
-	  <p><br>Need to sleep with friends? <a href="register.html">Register</a>
+	  <p><br>Already sleeping with friends? <a href="login.html">Login</a>
         <!--<div class="col-lg-4">
           <h2>Some text thingy</h2>
           <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
