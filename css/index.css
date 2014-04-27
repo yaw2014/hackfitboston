@@ -97,10 +97,15 @@ body {
 	padding: 1% 0 1% 0;
 }
 
-.moodNote {
-	padding: 1% 0 1% 0;
+.moodNote{
+	margin: 2% 0 1% 0;
 }
-.jumbotron h1{
+
+.startSleep button {
+	padding: 3% 0 1% 0;
+}
+
+.jumbotron h1 {
 	opacity: .8;
 	color: rgb(69, 168, 255);
 	text-shadow: 1px 1px 2px rgb(140, 149, 182);
@@ -108,11 +113,20 @@ body {
 
   body
   {
-      background-image:url("../img/logo.png");
+      /* background-image:url("../img/logo.png");*/
       background-repeat:no-repeat;
       background-size: 50%;
 	  background-position: -40px 74px;
   }
+
+  .dashboard body {
+ 		background-image:url("../img/logo.png");
+  } 
+
+  .moodNote .form-conrol {
+  	height: 200px;
+  } 
+
   /*img.logo{
   position: absolute;
   max-width: 65%;
