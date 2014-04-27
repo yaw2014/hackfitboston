@@ -20,23 +20,76 @@
       <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
   </head>
+  <style text/css>
+  #sleepytime{
+    display:inline;
+  }
+
+  </style>
+  <script>
+  $(document).ready( function(){
+  var d = new Date();
+  var hours = d.getHours();
+  var minutes = d.getMinutes();
+  var ampm;
+
+  console.log(hours);
+  console.log(minutes);
+
+  if (hours > 11)
+  {
+    hours = hours % 12;
+    ampm = "PM";
+  }
+  else
+  {
+    ampm = "AM";
+  }
+  
+  console.log(ampm);
+  $("#sleepytime").html(hours+":"+minutes + " "+ampm);
+  });
+
+  var datapoint = new Object();
+  //structured as {day, sleepytime, waketime};
+
+if (typeof localStorage.data !== 'undefined' && localStorage.data.length > 0) {
+    var size = localStorage.data.size(day);
+  //localStorage.data = [{day: 1, sleep_time: d}];
+  localStorage.data.push = new datapoint(size,d,0);
+}
+else{
+  localStorage.data = new Array{};
+  localStorage.data.push = new datapoint(size,d,0);
+}
+// function to determine size local Storage object array
+  Object.size = function(obj) {
+    var size = 0, key;
+    for (key in obj) {
+        if (obj.hasOwnProperty(key)) size++;
+    }
+    return size;
+};
+
+  console.log(localStorage.data); 
+  </script>
 
   <body>
 
     <div class="container">
 
       <div class="masthead">
-        <h3 class="text-muted">Sleep with Friends</h3>
-        <ul class="nav nav-justified">
+        <h3 class="text-muted">Time to sleep!</h3>
+        <!--<ul class="nav nav-justified">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="login.html">Login</a></li>
           <li><a href="about.html">About</a></li>
-        </ul>
+        </ul>-->
       </div>
 
       <!-- Moode Slider -->
       <div class="moodSlider">
-        <h3>It's 12:07 pm, how do you feel?</h3>
+        <h3>It's <div id = "sleepytime"></div>, how do you feel?</h3>
         <p>On a scale from watching reality TV to completing a Spartan Race:</p>
         <input id="moodSleepSlider" data-slider-id='moodSleepSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="80"/>
       </div>
