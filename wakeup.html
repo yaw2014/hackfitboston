@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
+		<link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+		<title>Sleep with Friends</title>
+		<script src="js/jquery.js"></script>
+		<link href="js/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+		<link href="js/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+		<link href="css/index.css" rel="stylesheet">
+		<link href="css/bootstrap-slider.css" rel="stylesheet">
+
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="container">
+
+			<script>
+				function wakeup() {
+					return true;
+				}
+
+			</script>
+			<form action="dashboard.html" onsubmit="return wakeup()">
+				<!-- Mood Slider -->
+				<div class="moodSlider">
+					<h3>So, how was it?</h3>
+					<p id="description"></p>
+					<script>
+						localStorage.setItem("description", ["On a scale from watching reality TV to completing a Spartan Race:", "On a scale from eating bananas to rock paper scissors:"]);
+						localStorage.descNum = parseInt(localStorage.descNum)+1;
+						desc = localStorage.getItem("description").split(",");
+						desc = desc[localStorage.descNum%(desc.length)];
+						console.log(localStorage.descNum)
+						$("#description").text(desc);
+					</script>
+					<input id="moodSleepSlider" data-slider-id='moodSleepSlider' type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="80"/>
+				</div>
+
+
+				<!-- Note -->
+				<div class="moodNote">
+					<p>Write something interesting about your day:</p>
+					<input type="text" class="form-control" placeholder="Ex: drank Rocket Fuel off-menu special at Barrington with Chuck Norris">
+				</div>
+
+				<!-- Go to Sleep button -->
+				<div class="startSleep">
+					<button type="submit" class="btn btn-default">Sleepy time</button>
+				</div>
+			</form>
+
+			<!-- Site footer -->
+			<div class="footer">
+				<p>&copy; Sleep with Friends 2014 #hackfitboston</p>
+			</div>
+
+		</div> <!-- /container -->
+
+
+		<!-- Bootstrap core JavaScript
+		================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type='text/javascript' src="js/bootstrap-slider.js"></script>
+		<script type='text/javascript'>
+			$(document).ready(function() {
+				/* Example 1 */
+				$('#moodSleepSlider').slider({
+					formater: function(value) {
+						return 'Current value: ' + value;
+					}
+				});
+			});
+		</script>
+	</body>
+</html>
